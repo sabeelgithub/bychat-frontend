@@ -6,6 +6,7 @@ import LoginPage from '../Pages/LoginPage'
 import RegisterPage from '../Pages/RegisterPage'
 import MembersPage from '../Pages/MembersPage'
 import ChatPage from '../Pages/ChatPage'
+import ProfilePage from '../Pages/ProfilePage'
 
 function UserRoutes() {
   return (
@@ -16,6 +17,7 @@ function UserRoutes() {
     <Route path="/login" element={<LoginPage/>}/>
     <Route path="/members" element={<MembersPage/>}/>
     <Route path="/chats" element={<ChatPage/>}/>
+    <Route path="/profile" element={<ProfilePage/>}/>
     </Routes>
     </>
   )

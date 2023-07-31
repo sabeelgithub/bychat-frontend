@@ -76,7 +76,7 @@ export default function Header() {
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
 
 
-                        <Link to="" className='text-white font-bold mx-32 mt-2 uppercase'>
+                        <Link to="/profile" className='text-white font-bold mx-32 mt-2 uppercase'>
                             name
                         </Link>
 
@@ -117,7 +117,7 @@ export default function Header() {
                                     <Link to="/chats" className="-mx-3 block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"><BsFillChatDotsFill className='h-7'/></Link>
 
 
-                                    <Link to="" className="-mx-3 block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50 uppercase">
+                                    <Link to="/profile" className="-mx-3 block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50 uppercase">
                                         Name
                                     </Link>
 
