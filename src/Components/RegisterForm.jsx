@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import banner from '../Assets/register.avif'
 import { useFormik } from 'formik'
 import { registrationSchema } from '../Validation/registrationValidation'
 import { toast } from 'react-toastify';
 import { Register } from '../Axios/Services/CommenServices'
+import Loaders from '../Components/Loader/Loaders'
+
 
 
 
 function RegisterForm() {
+    const [loader, setLoader] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+          setLoader(false)
+        }, 600);
+      }, [])
 
     const navigate = useNavigate()
 
@@ -54,7 +63,8 @@ function RegisterForm() {
 
 
     return (
-        <div className=' md:flex w-full h-full'>
+        <>
+        {loader ? <Loaders/> : <div className=' md:flex w-full h-full'>
         <div className=' md:w-1/2 mt-7 mb-7 sm:w-full h-[30rem] p-2 flex justify-center '>
 
         <img src={banner} alt="" className='h-full '/>
@@ -365,7 +375,9 @@ md:h-[31rem]
         
            
 
-        </div>
+        </div> }
+        
+        </>
     )
 }
 
