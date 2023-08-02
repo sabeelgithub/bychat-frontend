@@ -22,9 +22,11 @@ function RegisterForm() {
     const navigate = useNavigate()
 
     const onSubmit = async()=>{
+        setLoader(true)
         try{
             const response = await Register(values)
             if (response){
+                setLoader(false)
                 if (response.status === 201){
                     toast.success(response?.message)
                     navigate('/login')
@@ -36,12 +38,16 @@ function RegisterForm() {
                     else if (response.error?.mobile && response.error.mobile[0] === "user with this mobile already exists."){
                         toast.error('This Mobile  number is Already Registered')
                     }
+                } else if(response?.status === 208){
+                    toast.error(response.error)
+
                 } else {
                     toast.error('something went wrong')
                 }
             }
         }
         catch (error){
+            setLoader(false)
             console.log(error.message)
         }
     }
@@ -224,7 +230,7 @@ md:h-[31rem]
         ">
                                 <i className="fas fa-at text-blue-500" />
                             </div>
-                            <input id="email" type="email" name="email"
+                            <input id="email" type="text" name="email"
                             value={values.email}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -335,7 +341,7 @@ md:h-[31rem]
                                 text-white text-sm
                                 sm:text-base
                                 bg-blue-500
-                                hover:bg-blue-600
+                                hover:bg-blue-700
                                 rounded-2xl
                                 py-2
                                 w-full
@@ -345,7 +351,7 @@ md:h-[31rem]
                                 duration-150
                                 ease-in
                             ">
-                            <span className="mr-2 uppercase">Sign Up</span>
+                            <p className="mr-2 uppercase">Sign Up</p>
                             <span>
                                 <svg className="h-6 w-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
