@@ -16,7 +16,10 @@ function UsersList({users,refresh,SetRefresh}) {
                 toast.success(response?.message)
                 SetRefresh(!refresh)
                 
-            } else {
+            } else if(response?.status===208){
+              toast.error(response.error)
+
+            } else  {
                 toast.error('something went wrong')
             }
         }
